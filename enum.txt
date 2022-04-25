@@ -1,0 +1,10 @@
+1)depends on the order()method.
+2)false.
+3)0
+4)sorted in alphabetical order.
+5)compilation error
+6)compilation error
+7)a
+8)get enum.
+9)enum
+10)yes
