@@ -33,6 +33,38 @@ public class testsample {
 
 }
 
+package demo;
+ 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
+ 
+public class ToDoServiceImplTest {
+ 
+    @Mock
+    ToDoServiceImpl service;
+
+    @Before
+    public void SetUp() throws Exception{
+
+    }
+
+    @After
+    public void tearDown() throws Exception{
+
+    }
+
+
+    @Test
+    public void test1(){
+
+
+        service.retrieveData("1");
+    }
+
+
+}
 .\sysadm
 /$f#VWW216kxjKO
 
