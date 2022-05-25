@@ -1,0 +1,45 @@
+server:
+  port: 8060
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8061/eureka/
+
+logging:
+  pattern: 
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+              
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: helloworld-service
+        uri: lb://helloworld-service
+        predicates:
+        - Path=/helloworld/**
+        filters:
+        - RewritePath=/helloworld/(?<path>.*), /$\{path}
+      - id: olxadvertises-service
+        uri: lb://olxadvertises-service
+        predicates:
+        - Path=/olxadvertises/**
+        filters:
+        - RewritePath=/olxadvertises/(?<path>.*), /$\{path}
+      - id: oauth2-service
+        uri: lb://oauth2-service
+        predicates:
+        - Path=/oauth2/**
+        filters:
+        - RewritePath=/oauth2/(?<path>.*), /$\{path}
+      
+springdoc:
+  swagger-ui:
+    urls:
+      - name: helloworld
+        url: /v3/api-docs/helloworld
